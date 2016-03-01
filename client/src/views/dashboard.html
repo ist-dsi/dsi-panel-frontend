@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-12" style="margin-top: 20px">
+    <select ng-model="selectedProfile" ng-options="profile.name for profile in profiles track by profile.name"></select>
+
+  </div>
+  <div class="col-lg-3" ng-repeat="category in categories" style="margin-top: 20px">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ category.key | translate }}</div>
+      <div class="panel-body">
+        <ul>
+          <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">{{service.labelKey | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<a ui-sref="admin.search-users">Go to search users</a>

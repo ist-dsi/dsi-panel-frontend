@@ -1,4 +1,4 @@
 {
-  "jwtSecret": "insertJWTSecretHere",
+  "jwtSecret": "123456789",
   "mongoDbUrl": "mongodb://localhost:27017/dsi-panel"
 }

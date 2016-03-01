@@ -8,6 +8,8 @@
   }],
   "plugins": [
     {"blipp": null },
+    {"inert": null},
+    {"./auth": null },
     {"./groups": [{
       "routes": {
         "prefix": "/api/v1/groups"

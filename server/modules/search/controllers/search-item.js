@@ -18,6 +18,10 @@ module.exports.handler = function(request, reply) {
 
 module.exports.config = {
   description: "Search existing groups, users or requests.",
+  auth: {
+    strategy: 'jwt',
+    scope: ['user']
+  },
   validate: {
     query: {
       q: Joi.string().required(),

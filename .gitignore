@@ -1,2 +1,6 @@
+client/.sass-cache/
+client/bower_components
+
+db/
 server/db/
 node_modules/
