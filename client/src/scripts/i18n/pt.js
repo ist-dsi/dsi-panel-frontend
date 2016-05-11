@@ -2,10 +2,14 @@ module.exports = {
   "email": "Email",
   "wifi": "Wifi",
   "afs": "AFS",
+  "network": "Rede",
+  "proxy": "Proxy",
+  "voip": "VoIP",
+  "vpn": "VPN",
+  "databases": "Bases de Dados",
+  "storage": "Armazenamento",
   "database": "Base de Dados",
-  "activate.email": "Activar Email",
-  "request.email.alias": "Pedir Alias de Email",
-  "activate.wifi": "Activar WiFi",
-  "activate.afs": "Activar AFS",
-  "activate.db": "Activar Base de Dados"
+  "printing": "Serviço de Impressão",
+  "print": "Print",
+  "email.account": "Conta de Email"
 }

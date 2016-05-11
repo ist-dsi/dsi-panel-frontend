@@ -47,10 +47,15 @@
         }];
       };
 
-      $stateProvider.state('dashboard', {
+      $stateProvider.state('layout', {
+        abstract: true,
+        templateProvider: templateResolver('views/layout.html')
+      })
+      .state('dashboard', {
         url: '/',
+        parent: 'layout',
         templateProvider: templateResolver('views/dashboard.html'),
-        controller: controllers.serviceDashboard
+        controller: controllers.dashboard
       })
       .state('service', {
         url: '/services/{slug}',
@@ -59,16 +64,19 @@
       })
       .state('admin', {
         url: '/admin',
+        parent: 'layout',
         template: '<ui-view/>',
         abstract: true
       })
       .state('admin.search-users', {
         url: '/search/users',
+        parent: 'layout',
         templateProvider: templateResolver('views/admin/search-users.html'),
         controller: controllers.searchUsers
       })
       .state('admin.view-user', {
         url: '/users/{username}',
+        parent: 'layout',
         templateProvider: templateResolver('views/admin/view-user.html'),
         controller: controllers.viewUser
       });
@@ -77,6 +85,19 @@
 
 
   }]).run(['$rootScope', '$state', services.auth, function($rootScope, $state, AuthService) {
+
+
+
+      $rootScope.profiles = [{
+        name: "davidmartinho",
+        type: "user"
+      }, {
+        name: "marmitas-gang",
+        type: "group"
+      }];
+
+      $rootScope.selectedProfile = $rootScope.profiles[0];
+
 
     // $rootScope.logout = function() {
     //   AuthService.logout(function() {

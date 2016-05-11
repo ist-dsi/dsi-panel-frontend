@@ -11,11 +11,16 @@
 
 
   $templateCache.put('views/dashboard.html',
-    "<div class=row><div class=col-lg-12 style=\"margin-top: 20px\"><select ng-model=selectedProfile ng-options=\"profile.name for profile in profiles track by profile.name\"></select></div><div class=col-lg-3 ng-repeat=\"category in categories\" style=\"margin-top: 20px\"><div class=\"panel panel-default\"><div class=panel-heading>{{ category.key | translate }}</div><div class=panel-body><ul><li ng-repeat=\"service in category.services\" ui-sref=\"service({ slug: service.key })\">{{service.labelKey | translate }}</li></ul></div></div></div></div><a ui-sref=admin.search-users>Go to search users</a>"
+    "<div class=row><div class=col-lg-12 style=\"margin-top: 20px\"><h2>Conta Pessoal</h2><p class=text-muted>Painel de Controlo referente aos serviços da DSI.</p></div><div class=col-lg-4 ng-repeat=\"category in categories\" style=\"margin-top: 20px\"><div class=\"panel panel-default\" style=\"height: 280px\"><div class=panel-heading>{{ category.key | translate }}</div><ul class=list-group><li style=\"border: 1px solid #ddd; border-width: 1px 0; padding: 20px\" ng-repeat=\"service in category.services\" ui-sref=\"service({ slug: service.key })\" class=list-group-item>{{service.labelKey | translate }}</li></ul></div></div></div><a ui-sref=admin.search-users>Go to search users</a>"
+  );
+
+
+  $templateCache.put('views/layout.html',
+    "<nav class=\"navbar navbar-default\"><div class=container><div class=navbar-header><a class=navbar-brand href=#>DSI PANEL | TÉCNICO LISBOA</a></div><ul class=\"nav navbar-nav navbar-right\"><li class=dropdown><a href=# class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false>{{selectedProfile.name}} <span class=caret></span></a><ul class=dropdown-menu><li ng-repeat=\"profile in profiles\"><a href=#>{{profile.name}}</a></li><li role=separator class=divider></li><li><a href=#>Logout</a></li></ul></li></ul></div></nav><div class=container ui-view=\"\"></div><footer><div class=container><span>Contactar</span> <span class=pull-right>1997-2016 Instituto Superior Técnico, Universidade de Lisboa</span></div></footer>"
   );
 
 
   $templateCache.put('views/service.html',
-    "<h2>View Service {{service}}</h2>"
+    "<style>body { background: white; }</style><div class=container><h2>View Service {{service}}</h2></div>"
   );
  }])}(angular));

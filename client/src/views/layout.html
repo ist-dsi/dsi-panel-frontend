@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        DSI PANEL | TÉCNICO LISBOA
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{selectedProfile.name}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="profile in profiles"><a href="#">{{profile.name}}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+      </li>  
+    </ul>
+  </div>
+</nav>
+
+<div class="container" ui-view="">
+</div>
+<footer>
+  <div class="container">
+    <span>Contactar</span>
+    <span class="pull-right">1997-2016 Instituto Superior Técnico, Universidade de Lisboa</span> 
+  </div>
+</footer>

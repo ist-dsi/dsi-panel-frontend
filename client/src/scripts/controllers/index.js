@@ -4,14 +4,14 @@
 
   module.exports = function(app) {
 
-    var serviceDashboard = require('./service-dashboard')(app);
+    var dashboard = require('./dashboard')(app);
     var viewService = require('./view-service')(app);
     var searchUsers = require('./search-users')(app);
     var viewUser = require('./view-user')(app);
 
     return {
       viewService: viewService,
-      serviceDashboard: serviceDashboard,
+      dashboard: dashboard,
       searchUsers: searchUsers,
       viewUser: viewUser
     };

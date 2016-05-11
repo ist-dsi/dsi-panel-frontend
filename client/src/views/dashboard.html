@@ -1,16 +1,18 @@
 <div class="row">
   <div class="col-lg-12" style="margin-top: 20px">
-    <select ng-model="selectedProfile" ng-options="profile.name for profile in profiles track by profile.name"></select>
+
+  <h2>Conta Pessoal</h2>
+  <p class="text-muted">Painel de Controlo referente aos serviços da DSI.</p>
 
   </div>
-  <div class="col-lg-3" ng-repeat="category in categories" style="margin-top: 20px">
-    <div class="panel panel-default">
+  <div class="col-lg-4" ng-repeat="category in categories" style="margin-top: 20px">
+    <div class="panel panel-default" style="height: 280px">
       <div class="panel-heading">{{ category.key | translate }}</div>
-      <div class="panel-body">
-        <ul>
-          <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">{{service.labelKey | translate }}</li>
-        </ul>
-      </div>
+      <ul class="list-group">
+        <li style="border: 1px solid #ddd; border-width: 1px 0; padding: 20px" ng-repeat="service in category.services" ui-sref="service({ slug: service.key })" class="list-group-item">
+          {{service.labelKey | translate }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
