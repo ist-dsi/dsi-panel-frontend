@@ -10,11 +10,13 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "Views an existing group.",
-  validate: {
-    params: {
-      id: Joi.string().required()
+module.exports.config = function(config) {
+  return {
+    description: "Views an existing group.",
+    validate: {
+      params: {
+        id: Joi.string().required()
+      }
     }
-  }
-};
+  };
+}

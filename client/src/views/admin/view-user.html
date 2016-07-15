@@ -1,1 +1,276 @@
-<h2>{{user.name}}</h2>
+<section class="dashboard admin-viewer">
+	  		<div class="container">
+
+	  			<div class="row">
+	  				<div class="col-lg-12">
+	  					<div class="breadcrumbs">
+	  						<a ui-sref="admin">{{ 'administration' | translate }}</a>
+	  						<a ui-sref="admin.search-users">{{ 'people' | translate }}</a>
+	  						<span>{{user.name}}</span>
+	  					</div>
+	  				</div>
+	  			</div>
+
+	  		<div class="row dashboard">
+
+				<div class="col-lg-4 sidebar">
+
+					<!-- Bloco -->
+					<div class="col-lg-12">
+						<header class="profile">
+							<img ng-src="https://fenix.tecnico.ulisboa.pt/user/photo/{{user.id}}?s=94" class="avatar" />
+							<h2>{{user.name}}</h2>
+							<p><span>{{user.id}}</span></p>
+							<p><span ng-repeat="role in user.roles">{{role}}</span></p>
+						</header>
+						<div>
+							<strong>{{ 'contacts' | translate }}</strong>
+							<div ng-repeat="contact in user.contacts">
+								<a ng-if="contact.type === 'mobile'" href="tel:{{contact.value}}">{{contact.value}}</a>
+								<a ng-if="contact.type === 'email'" href="mailto:{{contact.value}}">{{contact.value}}</a>
+							</div>
+
+							<strong>{{ 'password.expiration' | translate }}</strong>
+							<p>{{ user.passwordExpires | amDateFormat: 'DD/MM/YYYY HH:mm' }} ({{ user.passwordExpires | amTimeAgo }})</p>
+
+							<div ng-show="user.groups.length > 0">
+								<strong>{{ 'groups' | translate }}</strong>
+								<a href="#" ng-repeat="group in user.groups" ui-sref="admin.view-group({ id: group.id })">{{group.name}}</a>
+							</div>
+						</div>
+					</div>
+					<!-- Fim de bloco -->
+
+					<!-- Bloco -->
+					<div class="col-lg-12">
+						<header>
+							<h2>{{ 'notes' | translate }}</h2>
+							<button type="button" class="btn btn-default">Nova nota</button>
+						</header>
+						<div ng-repeat="note in user.notes">
+
+							<strong>11 abril 2016</strong>
+							<p>{{note.text}}</p>
+							<a rel="author" class="author" href="#">{{note.author.name}}</a>
+
+						</div>
+					</div>
+					<!-- Fim de bloco -->
+
+				</div>
+
+				<div class="col-lg-8" id="main">
+
+
+					<!-- Início serviços -->
+					<div class="row">
+					<div class="col-lg-6">
+								<div class="services-group">
+									<header>
+										<h2>Rede</h2>
+									</header>
+									<ul class="links">
+										<li>
+											<a href="#" class="active">
+												<p>WiFi <span class="pending-for-review">2</span></p>
+												<div class="status-of-service">
+													<span class="status active">Ativo</span>
+													<span class="status pending">Pendente</span>
+													<span class="status activate">Ativar</span>
+													<span class="status blocked">Bloqueado</span>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="active">
+												<p>Proxy <span class="pending-for-review" style="display: inline-block">2</span></p>
+												<div class="status-of-service">
+													<span class="status active">Ativo</span>
+													<span class="status pending">Pendente</span>
+													<span class="status activate">Ativar</span>
+													<span class="status blocked">Bloqueado</span>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="activate">
+												<p>VoIP <span class="pending-for-review">2</span></p>
+												<div class="status-of-service">
+													<span class="status active">Ativo</span>
+													<span class="status pending">Pendente</span>
+													<span class="status activate">Ativar</span>
+													<span class="status blocked">Bloqueado</span>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+
+							<div class="col-lg-6">
+										<div class="services-group">
+											<header>
+												<h2>Rede</h2>
+											</header>
+											<ul class="links">
+												<li>
+													<a href="#" class="active">
+														<p>WiFi <span class="pending-for-review">2</span></p>
+														<div class="status-of-service">
+															<span class="status active">Ativo</span>
+															<span class="status pending">Pendente</span>
+															<span class="status activate">Ativar</span>
+															<span class="status blocked">Bloqueado</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="active">
+														<p>Proxy <span class="pending-for-review" style="display: inline-block">2</span></p>
+														<div class="status-of-service">
+															<span class="status active">Ativo</span>
+															<span class="status pending">Pendente</span>
+															<span class="status activate">Ativar</span>
+															<span class="status blocked">Bloqueado</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="activate">
+														<p>VoIP <span class="pending-for-review">2</span></p>
+														<div class="status-of-service">
+															<span class="status active">Ativo</span>
+															<span class="status pending">Pendente</span>
+															<span class="status activate">Ativar</span>
+															<span class="status blocked">Bloqueado</span>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+
+									<div class="col-lg-6">
+												<div class="services-group">
+													<header>
+														<h2>Rede</h2>
+													</header>
+													<ul class="links">
+														<li>
+															<a href="#" class="active">
+																<p>WiFi <span class="pending-for-review">2</span></p>
+																<div class="status-of-service">
+																	<span class="status active">Ativo</span>
+																	<span class="status pending">Pendente</span>
+																	<span class="status activate">Ativar</span>
+																	<span class="status blocked">Bloqueado</span>
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="#" class="active">
+																<p>Proxy <span class="pending-for-review" style="display: inline-block">2</span></p>
+																<div class="status-of-service">
+																	<span class="status active">Ativo</span>
+																	<span class="status pending">Pendente</span>
+																	<span class="status activate">Ativar</span>
+																	<span class="status blocked">Bloqueado</span>
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="#" class="activate">
+																<p>VoIP <span class="pending-for-review">2</span></p>
+																<div class="status-of-service">
+																	<span class="status active">Ativo</span>
+																	<span class="status pending">Pendente</span>
+																	<span class="status activate">Ativar</span>
+																	<span class="status blocked">Bloqueado</span>
+																</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+
+											<div class="col-lg-6">
+														<div class="services-group">
+															<header>
+																<h2>Rede</h2>
+															</header>
+															<ul class="links">
+																<li>
+																	<a href="#" class="active">
+																		<p>WiFi <span class="pending-for-review">2</span></p>
+																		<div class="status-of-service">
+																			<span class="status active">Ativo</span>
+																			<span class="status pending">Pendente</span>
+																			<span class="status activate">Ativar</span>
+																			<span class="status blocked">Bloqueado</span>
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" class="active">
+																		<p>Proxy <span class="pending-for-review" style="display: inline-block">2</span></p>
+																		<div class="status-of-service">
+																			<span class="status active">Ativo</span>
+																			<span class="status pending">Pendente</span>
+																			<span class="status activate">Ativar</span>
+																			<span class="status blocked">Bloqueado</span>
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" class="activate">
+																		<p>VoIP <span class="pending-for-review">2</span></p>
+																		<div class="status-of-service">
+																			<span class="status active">Ativo</span>
+																			<span class="status pending">Pendente</span>
+																			<span class="status activate">Ativar</span>
+																			<span class="status blocked">Bloqueado</span>
+																		</div>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+					<!-- Fim serviços -->
+
+					<!-- início de actividade -->
+					<div class="row">
+					<div class="col-lg-12">
+										<h2>{{ 'requests' | translate }}</h2>
+
+										<table class="table-default">
+										<thead>
+										<tr>
+										<th>{{ 'request' | translate }}</th>
+										<th>{{ 'date' | translate }}</th>
+										<th>{{ 'status' | translate }}</th>
+										</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="request in user.requests">
+												<td data-label="Pedido">{{ request.title }}</td>
+												<td data-label="Data">{{ request.timestamp | amTimeAgo }}</td>
+												<td data-label="Estado"><span class="status {{request.status}}">{{request.status | translate }}</span></td>
+											</tr>
+										</tbody></table>
+
+									</div>
+								</div>
+					<!-- Fim de actividade -->
+
+
+				</div>
+
+			</div>
+
+
+	  		</div>
+	  	  </section>

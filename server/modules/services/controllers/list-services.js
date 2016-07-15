@@ -12,12 +12,14 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "List existing services for a given entity type.",
-  validate: {
-    query: {
-      type: Joi.string().valid(VALID_TYPES).required(),
-      id: Joi.string().required()
+module.exports.config = function(config) {
+  return {
+    description: "List existing services for a given entity type.",
+    validate: {
+      query: {
+        type: Joi.string().valid(VALID_TYPES).required(),
+        id: Joi.string().required()
+      }
     }
   }
 };

@@ -22,7 +22,9 @@
     "mongoskin": "^2.0.3",
     "node-uuid": "^1.4.3",
     "push-notify": "^1.1.1",
+    "simple-cas-interface": "^0.2.1",
     "string-template": "^0.2.1",
+    "u2f": "^0.1.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

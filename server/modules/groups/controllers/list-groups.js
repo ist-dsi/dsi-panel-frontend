@@ -16,11 +16,14 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "List existing groups.",
-  validate: {
-    query: {
-      p: Joi.number().integer().min(1).default(1)
+module.exports.config = function(config) {
+  return {
+    description: "List existing groups.",
+    auth: config.auth,
+    validate: {
+      query: {
+        p: Joi.number().integer().min(1).default(1)
+      }
     }
   }
-};
+}

@@ -2,9 +2,9 @@
 
 (function(require, module) {
 
-  module.exports = function(app) {
+  module.exports = function(app, namespace) {
 
-    var controllerName = 'ViewServiceCtrl';
+    var controllerName = namespace.viewService = 'ViewServiceCtrl';
 
     app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', function($scope, $rootScope, $http, $stateParams) {
 

@@ -2,15 +2,15 @@
 
 (function(require, module) {
 
-  module.exports = function(app) {
+  module.exports = function(app, namespace) {
 
-    var controllerName = 'ViewUserCtrl';
+    var controllerName = namespace.viewUser = 'ViewUserCtrl';
 
-    app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', 'dsiPanelConfig', function($scope, $rootScope, $http, $stateParams, dsiPanelConfig) {
+    app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', app.R.config, function($scope, $rootScope, $http, $stateParams, appConfig) {
           
       $scope.user = {};
 
-      $http.get(dsiPanelConfig.baseUrl+"/users/"+$stateParams.username).then(function(response) {
+      $http.get(appConfig.baseUrl+"/users/"+$stateParams.username).then(function(response) {
         $scope.user = response.data;
       });
 

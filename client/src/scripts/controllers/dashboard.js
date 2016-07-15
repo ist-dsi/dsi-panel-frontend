@@ -2,9 +2,9 @@
 
 (function(require, module) {
 
-  module.exports = function(app) {
+  module.exports = function(app, namespace) {
 
-    var controllerName = 'DashboardCtrl';
+    var controllerName = namespace.dashboard = 'DashboardCtrl';
 
     app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', function($scope, $rootScope, $http, $stateParams) {
 

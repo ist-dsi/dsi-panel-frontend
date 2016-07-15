@@ -13,15 +13,17 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "Update the status of an existing request.",
-  validate: {
-    params: {
-      id: Joi.string().required()
-    },
-    payload: {
-      status: Joi.string().valid(VALID_STATES).required(),
-      response: Joi.object().required()
+module.exports.config = function(config) {
+  return {
+    description: "Update the status of an existing request.",
+    validate: {
+      params: {
+        id: Joi.string().required()
+      },
+      payload: {
+        status: Joi.string().valid(VALID_STATES).required(),
+        response: Joi.object().required()
+      }
     }
   }
 };

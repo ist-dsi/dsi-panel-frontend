@@ -6,7 +6,7 @@ exports.register = function (server, options, next) {
     path: '/{id}',
     method: 'GET',
     handler: controllers.viewUser.handler,
-    config: controllers.viewUser.config,
+    config: controllers.viewUser.config(server.settings.app),
   });
   
   next();

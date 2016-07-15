@@ -6,7 +6,7 @@ exports.register = function (server, options, next) {
     path: '/',
     method: 'GET',
     handler: controllers.listServices.handler,
-    config: controllers.listServices.config,
+    config: controllers.listServices.config(server.settings.app),
   });
   
   next();

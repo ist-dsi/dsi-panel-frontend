@@ -1,19 +1,25 @@
-<input type="text" ng-model="$query" placeholder="Pesquisa" class="form-control" style="margin-top: 20px" ng-enter="searchUser($query)" />
-<br>
+<form method="get" name="search-form" autocomplete="off" class="search-form" action="">
+  <label for="s">
+  <span class="sr-only">Pesquisar por:</span>
+    <input type="search" ng-model="$query" ng-enter="searchUser($query)" class="search-field" placeholder="Pesquisar…" value="wfewe" name="s" id="s">
+  </label>
+    <button type="submit" value="Pesquisa" class="search-submit">Submit</button>
+    <button type="button" value="Clean" class="search-reset clear-form" data-focus="input.search-field">Clean</button>
+</form>
 
-<table class="table" ng-if="users.length > 0">
+<table class="table-default" ng-show="users.length > 0">
   <thead>
     <tr>
-      <th class="col-lg-1">Photo</th>
-      <th>Name</th>
-      <th>Username</th>
+      <th>{{ 'name' | translate }}</th>
+      <th>{{ 'username' | translate }}</th>
+      <th><button>{{ 'options' | translate }}</button></th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
-      <td><img src="" alt=""></td>
-      <td ui-sref="admin.view-user({ username: user.id })">{{user.name}}</td>
-      <td>{{user.id}}</td>
+      <td data-label="Requerente"><input type="checkbox" name="checkbox2" id="checkbox2" class="checkbox"><label for="checkbox2"></label><div class="user-image"><p class="abbr">{{user.name}}</p><i class="photo"></i></div>{{user.name}}</td>
+      <td data-label="Username">{{user.id}}</td>
+      <td data-label="URL"><a ui-sref="admin.view-user({ username: user.id })" title="Ver Página"></a></td>
     </tr>
   </tbody>
 </table>

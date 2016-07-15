@@ -13,15 +13,17 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "Creates a new group.",
-  validate: {
-    payload: {
-      name: Joi.string().required(),
-      memberships: Joi.array().items(Joi.object({
-        username: Joi.string().required(),
-        admin: Joi.boolean().default(false)
-      })).required()
+module.exports.config = function(config) {
+  return {
+    description: "Creates a new group.",
+    validate: {
+      payload: {
+        name: Joi.string().required(),
+        memberships: Joi.array().items(Joi.object({
+          username: Joi.string().required(),
+          admin: Joi.boolean().default(false)
+        })).required()
+      }
     }
   }
-};
+}

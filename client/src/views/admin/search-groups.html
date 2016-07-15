@@ -1,0 +1,24 @@
+<form method="get" name="search-form" autocomplete="off" class="search-form" action="">
+  <label for="s">
+  <span class="sr-only">Pesquisar por:</span>
+    <input type="search" ng-model="$query" ng-enter="searchGroups($query)" class="search-field" placeholder="Pesquisar…" value="wfewe" name="s" id="s">
+  </label>
+    <button type="submit" value="Pesquisa" class="search-submit">Submit</button>
+    <button type="button" value="Clean" class="search-reset clear-form" data-focus="input.search-field">Clean</button>
+</form>
+
+
+<table class="table-default" ng-show="groups.length > 0">
+  <thead>
+    <tr>
+      <th>{{ 'group' | translate }}</th>
+      <th><button>{{ 'options' | translate }}</button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="group in groups">
+      <td data-label="Requerente"><input type="checkbox" name="checkbox5" id="checkbox5" class="checkbox"><label for="checkbox5"></label><div class="user-image"><p class="abbr">{{group.name}}</p><i class="photo"></i></div>{{group.name}}</td>
+      <td data-label="URL"><a ui-sref="admin.view-group({ slug: group.slug })" title="Ver Página"></a></td>
+    </tr>
+</tbody>
+</table>

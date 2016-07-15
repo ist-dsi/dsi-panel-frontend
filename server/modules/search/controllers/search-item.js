@@ -16,16 +16,15 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "Search existing groups, users or requests.",
-  auth: {
-    strategy: 'jwt',
-    scope: ['user']
-  },
-  validate: {
-    query: {
-      q: Joi.string().required(),
-      type: Joi.string().valid(["users", "groups", "requests"]).required() 
+module.exports.config = function(config) {
+  return {
+    description: "Search existing groups, users or requests.",
+    auth: config.auth,
+    validate: {
+      query: {
+        q: Joi.string().required(),
+        type: Joi.string().valid(["users", "groups", "requests"]).required() 
+      }
     }
   }
 };

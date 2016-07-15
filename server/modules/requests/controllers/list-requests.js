@@ -21,12 +21,14 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "List existing requests.",
-  validate: {
-    query: {
-      status: Joi.string().valid(VALID_STATUS).required(),
-      p: Joi.number().integer().min(1).default(1)
+module.exports.config = function(config) {
+  return {
+    description: "List existing requests.",
+    validate: {
+      query: {
+        status: Joi.string().valid(VALID_STATUS).required(),
+        p: Joi.number().integer().min(1).default(1)
+      }
     }
   }
 };

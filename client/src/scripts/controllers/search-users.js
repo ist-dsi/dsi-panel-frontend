@@ -2,16 +2,16 @@
 
 (function(require, module) {
 
-  module.exports = function(app) {
+  module.exports = function(app, namespace) {
 
-    var controllerName = 'SearchUsersCtrl';
+  var controllerName = namespace.searchUsers = 'SearchUsersCtrl';
 
-    app.controller(controllerName, ['$scope', '$rootScope', '$http', '$state', 'dsiPanelConfig', function($scope, $rootScope, $http, $state, dsiPanelConfig) {
+    app.controller(controllerName, ['$scope', '$rootScope', '$http', '$state', app.R.config, function($scope, $rootScope, $http, $state, appConfig) {
       
       $scope.users = [];
 
       $scope.searchUser = function(query) {
-        $http.get(dsiPanelConfig.baseUrl+"/search?type=users&q="+query).then(function(response) {
+        $http.get(appConfig.baseUrl+"/search?type=users&q="+query).then(function(response) {
           $scope.users = response.data.hits;
         });
       };

@@ -2,9 +2,10 @@ var modRewrite = require('connect-modrewrite');
 var jwt = require('jsonwebtoken');
 
 module.exports = function(base, port, keepalive) {
-  var serverPort = port || 9001;
+  var serverPort = port || 9000;
   return {
     options: {
+      protocol: 'https',
       base: base,
       port: serverPort,
       hostname: 'localhost',

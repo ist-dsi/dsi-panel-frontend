@@ -16,9 +16,11 @@ module.exports.handler = function(request, reply) {
   });
 };
 
-module.exports.config = {
-  description: "Creates a new user request.",
-  validate: {
-    payload: Joi.alternatives().try(require('./schemas'))
+module.exports.config = function(config) {
+  return {
+    description: "Creates a new user request.",
+    validate: {
+      payload: Joi.alternatives().try(require('./schemas'))
+    }
   }
 };

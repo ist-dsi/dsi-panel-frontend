@@ -1,0 +1,34 @@
+<form method="get" name="search-form" autocomplete="off" class="search-form" action="">
+  <label for="s">
+  <span class="sr-only">Pesquisar por:</span>
+    <input type="search" ng-model="$query" ng-enter="searchRequest($query)" class="search-field" placeholder="Pesquisar…" value="wfewe" name="s" id="s">
+  </label>
+    <button type="submit" value="Pesquisa" class="search-submit">Submit</button>
+    <button type="button" value="Clean" class="search-reset clear-form" data-focus="input.search-field">Clean</button>
+</form>
+
+
+<table class="table-default" ng-show="requests.length > 0">
+  <thead>
+    <tr>
+      <th>Pedido</th>
+      <th>Grupo</th>
+      <th>Requerente</th>
+      <th>Username</th>
+      <th>Data</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="request in requests">
+      <td data-label="Pedido">{{ request.title }}</td>
+      <td data-label="Grupo"><span ng-show="request.group">{{ request.group.name }}</span></td>
+      <td data-label="Requerente">{{ request.author.name }}</td>
+      <td data-label="Username">{{ request.author.id }}</td>
+      <td data-label="Data">{{ request.timestamp | amTimeAgo }}</td>
+      <td data-label="Estado"><span class="status pending">{{ request.status | translate }}</span></td>
+    </tr>
+</tbody>
+</table>
+
+

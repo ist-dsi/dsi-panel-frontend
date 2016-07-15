@@ -6,16 +6,29 @@
 
   </div>
   <div class="col-lg-4" ng-repeat="category in categories" style="margin-top: 20px">
-    <div class="panel panel-default" style="height: 280px">
-      <div class="panel-heading">{{ category.key | translate }}</div>
-      <ul class="list-group">
-        <li style="border: 1px solid #ddd; border-width: 1px 0; padding: 20px" ng-repeat="service in category.services" ui-sref="service({ slug: service.key })" class="list-group-item">
-          {{service.labelKey | translate }}
-        </li>
-      </ul>
-    </div>
+
+<div class="services-group">
+                  <header>
+                    <h2>{{ category.key | translate }}</h2>
+                  </header>
+                  <ul class="links">
+                    <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">
+                      <a href="#" class="active">
+                        <p>{{service.labelKey | translate }} <span class="pending-for-review">2</span></p>
+                        <div class="status-of-service">
+                          <span class="status active">Ativo</span>
+                          <span class="status pending">Pendente</span>
+                          <span class="status activate">Ativar</span>
+                          <span class="status blocked">Bloqueado</span>
+                        </div>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+
   </div>
 </div>
 
 
-<a ui-sref="admin.search-users">Go to search users</a>
+<a ui-sref="admin.search.users">Go to search users</a>

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="nav-tabs">
+    <div class="filter-by-type">
+      <div class="filter-wrap">
+      <a href="#" ui-sref="admin.search.requests" ui-sref-active="active">{{ 'requests' | translate }}</a>
+      <a href="#" ui-sref="admin.search.users" ui-sref-active="active">{{ 'people' | translate }}</a>
+      <a href="#" ui-sref="admin.search.groups" ui-sref-active="active">{{ 'groups' | translate }}</a>
+      </div>
+    </div>
+  </div>
+
+  <ui-view></ui-view>
+
+</div>
+

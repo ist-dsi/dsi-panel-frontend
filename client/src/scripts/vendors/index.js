@@ -13,8 +13,9 @@
   require('ng-file-upload-shim');
   require('ng-tags-input');
   require('d3');
+  require('angular-moment');
   require('angular-ui-router');
+  require('a0-angular-storage');
   require('typeahead.js');
   require('ng-tags-input');
-
 }(require, window));

@@ -6,7 +6,7 @@ exports.register = function (server, options, next) {
     path: '/',
     method: 'GET',
     handler: controllers.searchItem.handler,
-    config: controllers.searchItem.config,
+    config: controllers.searchItem.config(server.settings.app),
   });
   
   next();

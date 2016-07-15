@@ -4,13 +4,14 @@ var options = {
     relativeTo: __dirname + '/modules'
 };
 
-Glue.compose(require('./config/manifest.json'), options, function (err, server) {
+var config = require('./config/config.json');
+
+Glue.compose(require('./config/manifest')(config), options, function (err, server) {
   if (err) {
     throw err;
   }
   module.exports = server;
 
-  var config = require('./config/config.json');
   var bootstrap = require('./bootstrap')(config);
   var extensions = require('./extensions')(server, config);
 

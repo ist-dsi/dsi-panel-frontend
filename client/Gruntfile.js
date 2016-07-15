@@ -161,29 +161,6 @@ module.exports = function(grunt) {
           }
         }
       }
-    },
-    prompt: {
-      mockUser: {
-        options: {
-          questions: [{
-            config: "connect.options.mockUser.username",
-            type: "input",
-            default: "johndoe",
-            message: "Please insert the username of the user you wish to mock:"
-          },{
-            config: "connect.options.mockUser.name",
-            type: "input",
-            default: "John Doe",
-            message: "Please insert the name of the user you wish to mock:"
-          },{
-            config: "connect.options.mockUser.scopes",
-            type: "checkbox",
-            default: ["user"],
-            choices: ["user", "admin"],
-            message: "Please select one or more roles of the user you wish to mock:"
-          }]
-        }
-      }
     }
   });
 
@@ -201,11 +178,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-filerev');
   grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-config');
-  grunt.loadNpmTasks('grunt-prompt');
 
   // Default task.
   grunt.registerTask('default', ['dev']);
-  grunt.registerTask('dev', ['config:dev', 'bower', 'ngtemplates', 'browserify', 'sass:development', 'copy:build', 'prompt:mockUser', 'connect:dev', 'watch']);
+  grunt.registerTask('dev', ['config:dev', 'bower', 'ngtemplates', 'browserify', 'sass:development', 'copy:build', 'connect:dev', 'watch']);
   grunt.registerTask('dist', ['bower', 'ngtemplates', 'browserify', 'copy', 'sass:production', 'useminPrepare', 'concat', 'uglify', 'filerev', 'usemin'])
   grunt.registerTask('server', ['connect:dist'])
 

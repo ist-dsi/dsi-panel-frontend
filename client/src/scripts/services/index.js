@@ -4,12 +4,12 @@
 
   module.exports = function(app) {
 
-    var authService = require('./auth')(app);
-    var authInterceptorService = require('./auth-interceptor')(app, authService);
+  	var namespace = app.R.services = {};
+
+    var dsiPanelApi = require('./dsipanel-api')(app, namespace);
 
     return {
-      auth: authService,
-      authInterceptor: authInterceptorService
+      dsiPanelApi: dsiPanelApi
     }
 
   }
