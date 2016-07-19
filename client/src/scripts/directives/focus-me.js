@@ -6,7 +6,7 @@
 
   module.exports = function(app) {
 
-    app.directive('focusMe', ['$timeout', function($timeout) {
+    app.directive(directiveName, ['$timeout', function($timeout) {
       return {
         scope: { trigger: '=focusMe' },
         link: function(scope, element) {

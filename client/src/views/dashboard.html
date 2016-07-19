@@ -8,24 +8,24 @@
   <div class="col-lg-4" ng-repeat="category in categories" style="margin-top: 20px">
 
 <div class="services-group">
-                  <header>
-                    <h2>{{ category.key | translate }}</h2>
-                  </header>
-                  <ul class="links">
-                    <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">
-                      <a href="#" class="active">
-                        <p>{{service.labelKey | translate }} <span class="pending-for-review">2</span></p>
-                        <div class="status-of-service">
-                          <span class="status active">Ativo</span>
-                          <span class="status pending">Pendente</span>
-                          <span class="status activate">Ativar</span>
-                          <span class="status blocked">Bloqueado</span>
-                        </div>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </div>
+    <header>
+      <h2>{{ category.key | translate }}</h2>
+    </header>
+    <ul class="links">
+      <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">
+        <a href="#" class="active">
+          <p>{{service.labelKey | translate }} <span class="pending-for-review">2</span></p>
+          <div class="status-of-service">
+            <span class="status active">Ativo</span>
+            <span class="status pending">Pendente</span>
+            <span class="status activate">Ativar</span>
+            <span class="status blocked">Bloqueado</span>
+          </div>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 
   </div>
 </div>

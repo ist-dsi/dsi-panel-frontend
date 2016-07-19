@@ -14,6 +14,7 @@
     'ngFileUpload',
     'ngStorage',
     'angularMoment',
+    'ngAnimate',
     'angular-storage'
   ]);
 
@@ -55,7 +56,12 @@
 
       $stateProvider.state('layout', {
         abstract: true,
-        templateProvider: templateResolver('views/layout.html')
+        views: {
+          '': {
+            templateProvider: templateResolver('views/layout.html')
+          },
+          'modal@layout':  {}
+        }
       })
       .state('dashboard', {
         url: '/',
@@ -64,9 +70,15 @@
         controller: app.R.controllers.dashboard
       })
       .state('service', {
-        url: '/services/{slug}',
-        templateProvider: templateResolver('views/service.html'),
-        controller: app.R.controllers.viewService
+        url: '^/services/{slug}',
+        parent: 'dashboard',
+        isModal: true,
+        views: {
+          'modal@layout': {
+            templateProvider: templateResolver('views/service.html'),
+            controller: app.R.controllers.viewService
+          }
+        }
       })
       .state('admin', {
         url: '/admin',
@@ -156,21 +168,27 @@
       $httpProvider.interceptors.push('myHttpInterceptor');
 
 
-  }]).run(['$rootScope', '$state', 'store', app.R.services.dsiPanelAPI, function($rootScope, $state, store, DSIPanelAPI) {
-      DSIPanelAPI.getProfiles({
-        successCallback: function(profiles) {
-          $rootScope.profiles = profiles;
-          $rootScope.selectedProfile = $rootScope.profiles[0];
-        },
-        errorCallback: console.log
-      });
+  }]).run(['$rootScope', '$state', 'store', app.R.services.dsiPanelAPI, app.R.services.u2f, function($rootScope, $state, store, DSIPanelAPI, U2FService) {
+    DSIPanelAPI.getProfiles({
+      successCallback: function(profiles) {
+        $rootScope.profiles = profiles;
+        $rootScope.selectedProfile = $rootScope.profiles[0];
+      },
+      errorCallback: console.log
+    });
+
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+      $rootScope.isModalOpen = toState.isModal;
       if (toState.requiresU2F) {
         if(!store.get("session.admin")) {
           event.preventDefault();
-          var cb = encodeURI($state.href(toState.name, toParams, { absolute: true }));
-          $state.transitionTo("admin.u2f-login", {cb: cb});
+          $rootScope.u2fTransition = {
+            toState: toState,
+            toParams: toParams
+          };
+          //var url = $state.href(toState.name, toParams, { absolute: true });
+          U2FService.loginYubiKey();
         }
       }
     });

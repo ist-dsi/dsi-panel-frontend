@@ -2,11 +2,12 @@
   "name": "dsipanel-ui",
   "version": "1.0.0-SNAPSHOT",
   "dependencies": {
-    "angular": "1.4.3",
+    "angular": "1.5.7",
+    "angular-animate": "1.5.7",
     "angular-google-maps": "~2.2.1",
     "angular-modal-service": "~0.6.7",
-    "angular-resource": "1.4.3",
-    "angular-route": "1.4.3",
+    "angular-resource": "1.5.7",
+    "angular-route": "1.5.7",
     "angular-translate": "2.5.2",
     "angular-translate-loader-static-files": "2.5.2",
     "angular-ui-router": "0.2.13",
@@ -36,6 +37,6 @@
     }
   },
   "resolutions": {
-    "angular": "1.4.3"
+    "angular": "1.5.7"
   }
 }

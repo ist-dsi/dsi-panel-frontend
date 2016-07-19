@@ -7,6 +7,7 @@
   require('angular-translate');
   require('angular-resource');
   require('angular-route');
+  require('angular-animate');
   require('ngstorage');
   require('angular-modal-service');
   require('ng-file-upload');

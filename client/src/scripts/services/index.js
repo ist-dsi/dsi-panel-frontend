@@ -7,9 +7,11 @@
   	var namespace = app.R.services = {};
 
     var dsiPanelApi = require('./dsipanel-api')(app, namespace);
+    var u2f = require('./u2f')(app, namespace);
 
     return {
-      dsiPanelApi: dsiPanelApi
+      dsiPanelApi: dsiPanelApi,
+      u2f: u2f
     }
 
   }

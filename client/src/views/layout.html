@@ -65,3 +65,10 @@
     </div>
   </div>
 </footer>
+
+
+<div class="small-modal" ng-if="smallModalTemplate" ng-include="smallModalTemplate">
+</div>
+
+<div class="modal-overlay" ng-class="{ open: isModalOpen }" ui-view="modal">
+</div>

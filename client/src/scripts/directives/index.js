@@ -6,10 +6,14 @@
 
     var ngEnter = require('./ng-enter')(app);
     var focusMe = require('./focus-me')(app);
+    var loginYubiKey = require('./login-yubi-key')(app);
+    var registerYubiKey = require('./register-yubi-key')(app);
 
     return {
       ngEnter: ngEnter,
-      focusMe: focusMe
+      focusMe: focusMe,
+      loginYubiKey: loginYubiKey,
+      registerYubiKey: registerYubiKey
     }
 
   }
