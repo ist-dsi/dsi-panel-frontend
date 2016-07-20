@@ -2797,7 +2797,7 @@ button
 
 /* Dropdown */
 
-.dropdown
+.dropdown-menu
 {
 	/* position: absolute; */
 	float: left;
@@ -2818,12 +2818,12 @@ button
 	opacity: 0;
 }
 
-.menu-active.dropdown{
+.dropdown.open .dropdown-menu{
 	visibility: visible;
 	opacity: 1;
 }
 
-.dropdown .arrow{
+.dropdown-menu .arrow{
 	display: block;
 	width: 100%;
 	height: 10px;
@@ -2834,7 +2834,7 @@ button
 	margin-top: -10px;
 }
 
-.dropdown .arrow:after {
+.dropdown-menu .arrow:after {
     content: '';
     display: block;
     width: 14px;
@@ -2858,12 +2858,12 @@ button
     transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-.dropdown li
+.dropdown-menu li
 {
     margin: 0;
 }
 
-.dropdown li a
+.dropdown-menu li a
 {
     display: block;
     padding: 12px 20px;
@@ -2875,14 +2875,14 @@ button
     transition: color .2s ease, background .2s ease;
 }
 
-.dropdown li a:hover
+.dropdown-menu li a:hover
 {
     background: #009DE0;
     color: #FFF;
     border-bottom: 0;
 }
 
-.dropdown .divider
+.dropdown-menu .divider
 {
 	border-top: 1px solid #ddd;
 }
@@ -3825,7 +3825,7 @@ tr th button.inactive-state::after
 	margin-top: -2px;
 }
 
-#current-profile .dropdown.menu
+#current-profile .dropdown-menu
 {
 	position: absolute;
 	right: 0;
@@ -4468,7 +4468,7 @@ header.service,
 		display: block;
 	}
 
-	#current-profile .dropdown.menu
+	#current-profile .dropdown-menu
 	{
 		position: fixed;
 	    top: 0;
@@ -4486,7 +4486,7 @@ header.service,
 	    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
 	}
 
-	#current-profile .dropdown.menu.menu-active {
+	#current-profile .dropdown-menu.menu-active {
 	    opacity: 1;
 	    visibility: visible;
 	}
@@ -4505,7 +4505,7 @@ header.service,
 
 	/* FIM */
 
-	#current-profile .dropdown.menu ul {
+	#current-profile .dropdown-menu ul {
 	    margin: 0;
 	    padding: 0;
 	    width: 100%;
@@ -4529,7 +4529,7 @@ header.service,
 	    border-bottom: 1px solid #313641;
 	}
 
-	.dropdown .divider
+	.dropdown-menu .divider
 	{
 		display: none;
 	}
@@ -4550,7 +4550,7 @@ header.service,
 
 @media screen and (max-width: 766px)
 {
-	#current-profile .dropdown.menu
+	#current-profile .dropdown-menu
 	{
 		right: -260px;
 	}

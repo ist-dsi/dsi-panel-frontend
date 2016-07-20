@@ -24,8 +24,8 @@
             </g>
         </svg>
         </a>
-      <div id="current-profile">
-        <a href="#" id="user-box">
+      <div id="current-profile" uib-dropdown>
+        <a href="#" id="user-box" uib-dropdown-toggle>
           <div class="avatar">
             <i class="photo"></i>
             <p class="abbr">{{selectedProfile.name}}</p>
@@ -34,11 +34,12 @@
             {{selectedProfile.name}}
           </p>
         </a>
-        <ul class="dropdown menu profile">
+        <ul class="dropdown-menu profile" uib-dropdown-menu>
           <i class="arrow"></i>
-          <li ng-repeat="profile in profiles"><a href="#">{{profile.name}}</a></li>
+          <li ng-repeat="profile in profiles" ng-click="selectProfile(profile)"><a href="#">{{profile.name}}</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">Logout</a></li>
+          <li ng-if="profiles[0].availableScopes.indexOf('admin') > -1"><a href="#" ui-sref="admin.search.users">{{ 'search.users' | translate }}</a></li>
+          <li><a href="#" ng-click="logout()">{{ 'logout' | translate }}</a></li>
         </ul>
       </div>
 
@@ -51,8 +52,8 @@
   </div>
 </header>
 
-<div class="container" ui-view="">
-</div>
+<section class="container" ui-view="">
+</section>
 <footer id="footer">
   <div class="container">
     <div class="row">

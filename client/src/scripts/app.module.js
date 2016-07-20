@@ -15,7 +15,8 @@
     'ngStorage',
     'angularMoment',
     'ngAnimate',
-    'angular-storage'
+    'angular-storage',
+    'ui.bootstrap'
   ]);
 
   app.R = {};
@@ -177,6 +178,14 @@
       errorCallback: console.log
     });
 
+    $rootScope.logout = function() {
+      store.remove("session.token");
+      store.remove("session.admin");
+    };
+
+    $rootScope.selectProfile = function(profile) {
+      $rootScope.selectedProfile = profile;
+    };
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
       $rootScope.isModalOpen = toState.isModal;

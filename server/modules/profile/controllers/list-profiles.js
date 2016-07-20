@@ -9,7 +9,7 @@ module.exports.handler = function(request, reply) {
     function(callback) {
       db.collection('users').find({ _id: principal }).limit(1).next(function(err, user) {
         if(err) callback(Boom.badImplementation("Could not list profiles"));
-        else callback(null, [{ slug: user._id, name: user.name, type: "user" }])
+        else callback(null, [{ slug: user._id, name: user.name, type: "user", availableScopes: user.scopes }]);
       });
     },
     function(callback) {

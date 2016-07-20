@@ -18,7 +18,7 @@
   	        		$rootScope.yubiStatusMessage = 'Submitting challenge to the server...';
 				  	$http.post(appConfig.baseUrl+"/u2f/challenge", deviceResponse).then(function(response) {
 				  		if(response.data) {
-		  	        		$rootScope.yubiStatusMessage = 'We verified that it really is you '+$rootScope.profiles[0].name;
+		  	        		$rootScope.yubiStatusMessage = 'Welcome Master '+$rootScope.profiles[0].name;
 		  	        		$timeout(function() {
 		  	        			delete $rootScope.smallModalTemplate;
 							  	store.set("session.admin", response.data);

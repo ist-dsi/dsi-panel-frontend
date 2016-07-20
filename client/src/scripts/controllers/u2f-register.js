@@ -10,11 +10,9 @@
 
         $http.get(appConfig.baseUrl+"/u2f/registration").then(function(response) {
             var authRequest = response.data;
-            debugger;
             u2f.register(authRequest.appId, [authRequest], [], function(res) {
-                debugger;
                 $http.post(appConfig.baseUrl+"/u2f/registration", res).then(function(res) {
-                    debugger;
+                    console.log(res);
                 });
             })
         });

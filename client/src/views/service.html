@@ -6,10 +6,10 @@
   <div class="col-lg-12">
     <header class="service">
       <div class="header-main-content">
-        <h1>Conta de email</h1>
+        <h1>{{ service.slug | translate }}</h1>
         <div class="breadcrumbs">
           <a href="#" class="breadcrumb">Self Service</a>
-          <a href="#" class="breadcrumb">Serviços de email</a>
+          <a href="#" class="breadcrumb">{{ service.slug | translate }}</a>
         </div>
       </div>
       <div class="service-main-actions">
@@ -17,9 +17,9 @@
         <div class="toggle ">
           <input type="checkbox" value="None" id="checkbox" name="check">
           <label for="checkbox"></label>
-          <span class="status active">Ativo</span>
-          <span class="status pending">Pendente</span>
-          <span class="status activate">Ativar</span>
+          <span class="status active">{{ 'active' | translate }}</span>
+          <span class="status pending">{{ 'pending' | translate }}</span>
+          <span class="status activate">{{ 'activate' | translate }}</span>
           <span class="working">
             <i></i>
             <i></i>

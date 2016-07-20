@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
-      <td data-label="Requerente"><input type="checkbox" name="checkbox2" id="checkbox2" class="checkbox"><label for="checkbox2"></label><div class="user-image"><p class="abbr">{{user.name}}</p><i class="photo"></i></div>{{user.name}}</td>
+      <td data-label="Requerente"><input type="checkbox" name="checkbox2" id="checkbox2" class="checkbox"><label for="checkbox2"></label><div class="user-image"><p class="abbr">{{user.name}}</p><i class="photo"><img ng-src="https://fenix.tecnico.ulisboa.pt/user/photo/{{user.id}}?s=94"></i></div>{{user.name}}</td>
       <td data-label="Username">{{user.id}}</td>
       <td data-label="URL"><a ui-sref="admin.view-user({ username: user.id })" title="Ver Página"></a></td>
     </tr>

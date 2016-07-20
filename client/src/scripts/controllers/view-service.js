@@ -8,7 +8,7 @@
 
     app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', function($scope, $rootScope, $http, $stateParams) {
 
-      $scope.service = $stateParams.slug;      
+      $scope.service= { slug: $stateParams.slug };
 
     }]);
 

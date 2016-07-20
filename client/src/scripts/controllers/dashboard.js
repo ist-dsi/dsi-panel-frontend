@@ -18,13 +18,13 @@
         { key: "storage", services: [
           { key: "afs", labelKey: "afs" },
           { key: "databases", labelKey: "databases" },
-          { key: "password", labelKey: "Mudança de Password" }
+          { key: "password", labelKey: "password.change" }
         ]},
         { key: "email", services: [
           { key: "email", labelKey: "email.account" }
         ]},
         { key: "printing", services: [
-          { key: "printer", labelKey: "print" }
+          { key: "print", labelKey: "print" }
         ]}
       ];
 

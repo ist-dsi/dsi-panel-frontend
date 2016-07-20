@@ -6,7 +6,7 @@ var PAGE_SIZE = 25;
 
 module.exports.handler = function(request, reply) {
   var db = request.db.connect();
-  db.collection(request.query.type).find({ "$text": { "$search": request.query.q }}).skip((request.query.p-1)*PAGE_SIZE).limit(PAGE_SIZE).toArray(function(err, hits) {
+  db.collection(request.query.type).find({ "$text": { "$search": request.query.q }}, { score: {$meta: "textScore" }}).sort({score:{$meta:"textScore"}}).skip((request.query.p-1)*PAGE_SIZE).limit(PAGE_SIZE).toArray(function(err, hits) {
     if(err) reply(Boom.badImplementation("Could not search "+request.query.type));
     else reply({
       page: request.query.p,
