@@ -28,6 +28,6 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "List existing services for a given entity type.",
-    auth: config.auth
+    auth: config.auth()
   }
 };

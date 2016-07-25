@@ -48,6 +48,11 @@ module.exports = function(config) {
         "routes": {
           "prefix": "/api/v1/services"
         }
+      }]},
+      {"./actions": [{
+        "routes": {
+          "prefix": "/api/v1/actions"
+        }
       }]}
     ]
   };

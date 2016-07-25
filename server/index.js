@@ -4,7 +4,7 @@ var options = {
     relativeTo: __dirname + '/modules'
 };
 
-var config = require('./config/config.json');
+var config = require('./config/config');
 
 Glue.compose(require('./config/manifest')(config), options, function (err, server) {
   if (err) {

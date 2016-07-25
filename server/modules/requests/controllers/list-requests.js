@@ -24,6 +24,7 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "List existing requests.",
+    auth: config.auth(),
     validate: {
       query: {
         status: Joi.string().valid(VALID_STATUS).required(),

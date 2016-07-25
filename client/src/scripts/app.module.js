@@ -172,7 +172,7 @@
   }]).run(['$rootScope', '$state', 'store', app.R.services.dsiPanelAPI, app.R.services.u2f, function($rootScope, $state, store, DSIPanelAPI, U2FService) {
     
     $rootScope.profiles = [];
-
+    debugger;
     DSIPanelAPI.getProfiles({
       successCallback: function(profiles) {
         $rootScope.profiles = profiles;
@@ -183,6 +183,11 @@
 
     $rootScope.logout = function() {
       store.remove("session.token");
+      store.remove("session.admin");
+      window.location.reload();
+    };
+
+    $rootScope.logoutAdmin = function() {
       store.remove("session.admin");
       window.location.reload();
     };

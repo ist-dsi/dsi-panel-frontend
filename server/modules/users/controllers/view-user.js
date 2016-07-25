@@ -7,6 +7,9 @@ module.exports.handler = function(request, reply) {
   var principal = request.getPrincipal();
   async.parallel([
     function(callback) {
+      request.dsiPanel.fetchUserInfo(principal, request.headers.authorization, callback);
+    },
+    function(callback) {
       db.collection('users').find({ "_id": request.params.id }).limit(1).next(function(err, user) {
         if(err) callback(Boom.badImplementation("Could not find the user"));
         else callback(null, request.idTransform(user));
@@ -31,9 +34,9 @@ module.exports.handler = function(request, reply) {
   }], function(err, results) {
     if(err) reply(err);
     else {
-      var user = results[0];
-      user.requests = results[1];
-      user.groups = results[2];
+      var user = results[1];
+      user.requests = results[2];
+      user.groups = results[3];
       reply(user);
     }
   });
@@ -42,7 +45,7 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "Views an existing user.",
-    auth: Object.assign({}, config.auth, { scope: ["admin"]}),
+    auth: config.auth(["admin"]),
     validate: {
       params: {
         id: Joi.string().required()

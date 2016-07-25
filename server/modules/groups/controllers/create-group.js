@@ -16,6 +16,7 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "Creates a new group.",
+    auth: config.auth(),
     validate: {
       payload: {
         name: Joi.string().required(),

@@ -49,7 +49,7 @@
 						</header>
 						<div ng-repeat="note in user.notes">
 
-							<strong>11 abril 2016</strong>
+							<strong>{{ note.timestamp | amDateFormat: 'DD/MM/YYYY HH:mm' }}</strong>
 							<p>{{note.text}}</p>
 							<a rel="author" class="author" href="#">{{note.author.name}}</a>
 

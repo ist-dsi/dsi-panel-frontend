@@ -13,6 +13,7 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "Views an existing user or group request.",
+    auth: config.auth(),
     validate: {
       params: {
         id: Joi.string().required()

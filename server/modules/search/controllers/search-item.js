@@ -19,7 +19,7 @@ module.exports.handler = function(request, reply) {
 module.exports.config = function(config) {
   return {
     description: "Search existing groups, users or requests.",
-    auth: config.auth,
+    auth: config.auth(),
     validate: {
       query: {
         q: Joi.string().required(),
