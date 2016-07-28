@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-lg-12" style="margin-top: 20px">
 
-  <h2>Conta Pessoal</h2>
+  <h2 ng-if="selectedProfile.type === 'user'">Conta Pessoal</h2>
+  <h2 ng-if="selectedProfile.type === 'group'">{{selectedProfile.name}}</h2>
   <p class="text-muted">Painel de Controlo referente aos serviços da DSI.</p>
 
   </div>
@@ -12,14 +13,11 @@
       <h2>{{ category.key | translate }}</h2>
     </header>
     <ul class="links">
-      <li ng-repeat="service in category.services" ui-sref="service({ slug: service.key })">
+      <li ng-repeat="service in category.services" ui-sref="service({ slug: service.slug })">
         <a href="#" class="active">
-          <p>{{service.labelKey | translate }} <span class="pending-for-review">2</span></p>
+          <p>{{service.slug | translate }} <span class="pending-for-review">2</span></p>
           <div class="status-of-service">
-            <span class="status active">Ativo</span>
-            <span class="status pending">Pendente</span>
-            <span class="status activate">Ativar</span>
-            <span class="status blocked">Bloqueado</span>
+            <span class="status {{service.status}}">{{service.status}}</span>
           </div>
         </a>
       </li>

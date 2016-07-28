@@ -32,4 +32,5 @@ module.exports = {
   "options": "Opções",
   "logout": "Terminar sessão",
   "search.users": "Procurar Utilizadores",
+  "logout.admin": "Terminar Sessão de Admin",
 }

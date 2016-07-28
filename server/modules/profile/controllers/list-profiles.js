@@ -17,8 +17,9 @@ module.exports.handler = function(request, reply) {
         if(err) callback(Boom.badImplementation("Could not list profiles"));
         else callback(null, groups.map(function(group) {
             return {
+              slug: group._id,
               name: group.name,
-              type: group
+              type: "group"
             }
         }));
           

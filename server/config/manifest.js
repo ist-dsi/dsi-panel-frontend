@@ -53,6 +53,16 @@ module.exports = function(config) {
         "routes": {
           "prefix": "/api/v1/actions"
         }
+      }]},
+      {"./scripts": [{
+        "routes": {
+          "prefix": "/api/v1/scripts"
+        }
+      }]},
+      {"./provisionings": [{
+        "routes": {
+          "prefix": "/api/v1/provisionings"
+        }
       }]}
     ]
   };

@@ -45,7 +45,7 @@ var casPlugin = function (server, options) {
   function gethandler(request, reply) {
     const ticket = request.query.ticket;
     if (!ticket) {
-      console.log('No ticket query parameter supplied to CAS handler end point');
+      //console.log('No ticket query parameter supplied to CAS handler end point');
       const boom = Boom.badRequest('Missing ticket parameter');
       return addHeaders(request, reply(boom));
     }
@@ -57,8 +57,8 @@ var casPlugin = function (server, options) {
         return reply().redirect("https://localhost:9000/#token="+token);
       })
       .catch(function caught(error) {
-        console.log('Service ticket validation failed:');
-        console.log('%j', error);
+        //console.log('Service ticket validation failed:');
+        //console.log('%j', error);
         return addHeaders(request, reply(Boom.forbidden(error.message)));
       });
   }
@@ -102,14 +102,14 @@ var casPlugin = function (server, options) {
     
     const authorization = request.headers.authorization || request.query.jwt;
     if (authorization) {
-      console.log('User has Authorization header');
+      //console.log('User has Authorization header');
       jwt.verify(authorization, request.server.settings.app.jwtKey, function(err, decoded) {
-        console.log(decoded);
+        //console.log(decoded);
         if(err) reply(Boom.unauthorized("You do not have authorization"));
         return reply.continue({credentials: decoded});
       });
     } else {
-      console.log('Authentication not found. Redirecting user to: %s', cas.loginUrl);
+      //console.log('Authentication not found. Redirecting user to: %s', cas.loginUrl);
 
       return addHeaders(
         request,

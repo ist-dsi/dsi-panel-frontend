@@ -7,9 +7,13 @@
   	var namespace = app.R.resources = {};
 
     var profile = require('./profile')(app, namespace);
+    var service = require('./service')(app, namespace);
+    var provisioning = require('./provisioning')(app, namespace);
 
     return {
-      profile: profile
+      profile: profile,
+      service: service,
+	  provisioning: provisioning
     }
 
   }

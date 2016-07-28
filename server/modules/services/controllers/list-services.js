@@ -6,7 +6,7 @@ var VALID_TYPES = ["user", "group"];
 
 module.exports.handler = function(request, reply) {
   var db = request.db.connect();
-  db.collection('services').find({ target: request.query.id }).toArray(function(err, services) {
+  db.collection('services').find().toArray(function(err, services) {
     if(err) reply(Boom.badImplementation("Could not list services"));
     else reply(services.map(request.idTransform));
   });
@@ -14,7 +14,8 @@ module.exports.handler = function(request, reply) {
 
 module.exports.config = function(config) {
   return {
-    description: "List existing services for a given entity type.",
+    description: "List all available services.",
+    auth: config.auth(["admin"]),
     validate: {
       query: {
         type: Joi.string().valid(VALID_TYPES).required(),

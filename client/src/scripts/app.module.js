@@ -24,10 +24,10 @@
   app.constant(appConfigKey, { baseUrl: window.REMOTE_BASE_URL });
 
   require('./resources')(app);
+  require('./services')(app);
   require('./controllers')(app);
   require('./directives')(app);
 
-  require('./services')(app);
 
   app.config(['$provide', '$urlRouterProvider', '$httpProvider', '$stateProvider', '$logProvider', '$translateProvider', '$locationProvider', '$urlMatcherFactoryProvider',
     function ($provide, $urlRouterProvider, $httpProvider, $stateProvider, $logProvider, $translateProvider, $locationProvider, $urlMatcherFactoryProvider) {
@@ -170,9 +170,9 @@
 
 
   }]).run(['$rootScope', '$state', 'store', app.R.services.dsiPanelAPI, app.R.services.u2f, function($rootScope, $state, store, DSIPanelAPI, U2FService) {
-    
+
     $rootScope.profiles = [];
-    debugger;
+
     DSIPanelAPI.getProfiles({
       successCallback: function(profiles) {
         $rootScope.profiles = profiles;
@@ -185,6 +185,10 @@
       store.remove("session.token");
       store.remove("session.admin");
       window.location.reload();
+    };
+
+    $rootScope.isLoggedAsAdmin = function() {
+      return store.get("session.admin") !== null;
     };
 
     $rootScope.logoutAdmin = function() {

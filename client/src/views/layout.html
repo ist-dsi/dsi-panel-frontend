@@ -39,7 +39,7 @@
           <li ng-repeat="profile in profiles" ng-click="selectProfile(profile)"><a href="#">{{profile.name}}</a></li>
           <li role="separator" class="divider"></li>
           <li ng-if="profiles[0].availableScopes.indexOf('admin') > -1"><a href="#" ui-sref="admin.search.users">{{ 'search.users' | translate }}</a></li>
-          <li><a href="#" ng-click="logoutAdmin()">{{ 'logout.admin' | translate }}</a></li>
+          <li ng-if="isLoggedAsAdmin()"><a href="#" ng-click="logoutAdmin()">{{ 'logout.admin' | translate }}</a></li>
           <li><a href="#" ng-click="logout()">{{ 'logout' | translate }}</a></li>
         </ul>
       </div>

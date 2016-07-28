@@ -6,27 +6,20 @@
 
     var controllerName = namespace.dashboard = 'DashboardCtrl';
 
-    app.controller(controllerName, ['$scope', '$rootScope', '$http', '$stateParams', function($scope, $rootScope, $http, $stateParams) {
+    app.controller(controllerName, ['$scope', '$rootScope', app.R.services.dsiPanelAPI, function($scope, $rootScope, DSIPanelAPI) {
 
-      $scope.categories = [
-        { key: "network", services: [
-          { key: "wifi", labelKey: "wifi" },
-          { key: "proxy", labelKey: "proxy" },
-          { key: "voip", labelKey: "voip" },
-          { key: "vpn", labelKey: "vpn" }
-        ]},
-        { key: "storage", services: [
-          { key: "afs", labelKey: "afs" },
-          { key: "databases", labelKey: "databases" },
-          { key: "password", labelKey: "password.change" }
-        ]},
-        { key: "email", services: [
-          { key: "email", labelKey: "email.account" }
-        ]},
-        { key: "printing", services: [
-          { key: "print", labelKey: "print" }
-        ]}
-      ];
+      $rootScope.$watch('selectedProfile', function(newVal, old) {
+        if(newVal) {
+          DSIPanelAPI.getProvisionings({
+            profile: $rootScope.selectedProfile,
+            successCallback: function(categories) {
+              $scope.categories = categories;
+            },
+            errorCallback: console.log
+          });
+        }
+        
+      });
 
     }]);
 
