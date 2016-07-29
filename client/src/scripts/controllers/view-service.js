@@ -27,26 +27,12 @@
       	}
       });
 
-      $scope.toggleServiceState = function() {
-      	console.log("Activating service"+$scope.service);
-      	if($scope.service.state === 'inactive') {
-      		DSIPanelAPI.activateService({
-            profile: $rootScope.selectedProfile,
-      			service: $scope.service.slug,
-      			successCallback: function() {
-      				recheckServiceStateIn($scope.availableServices[$scope.service.slug].recheckTimeInMs);
-      			},
-      			errorCallback: console.log
-      		});
-      	} else {
-      		DSIPanelAPI.deactivateService({
-      			service: $scope.service.slug,
-      			successCallback: function() {
-      				recheckServiceStateIn($scope.availableServices[$scope.service.slug].recheckTimeInMs);
-      			},
-      			errorCallback: console.log
-      		});
-      	}
+      $scope.toggleServiceState = function(event) {
+        event.preventDefault();
+        if(!$scope.service.status) {
+          $scope.service.status = 'pending';
+        }
+        $scope.$broadcast('serviceStateToggle');      	
       };
 
       var recheckServiceStateIn = function(timeoutInMs) {

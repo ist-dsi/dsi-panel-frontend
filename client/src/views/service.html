@@ -14,8 +14,8 @@
         </div>
         <div class="service-main-actions">
           <!-- Checkbox -->
-          <div class="toggle" ng-class="{ active: service.status === 'active' }" ng-click="toggleServiceState()">
-            <input type="checkbox" ng-checked="service.status === 'active'" value="None" id="checkbox" name="check">
+          <div class="toggle" ng-class="{ active: service.status === 'active' }" ng-click="toggleServiceState($event)">
+            <input type="checkbox" ng-checked="service.status === 'pending' || service.status === 'active'" id="checkbox" name="check">
             <label for="checkbox"></label>
             <span class="status active">{{ 'active' | translate }}</span>
             <span class="status pending">{{ 'pending' | translate }}</span>
@@ -33,7 +33,11 @@
   </div>
 
 
-  <ng-include src="'views/services/'+service.slug+'.html'"></ng-include> 
+  <div ng-if="service.slug === 'vpn'" service-vpn="service"></div>
+  <div ng-if="service.slug === 'wifi'" service-wifi="service"></div>
+  <div ng-if="service.slug === 'afs'" service-afs="service"></div>
+  <div ng-if="service.slug === 'database'" service-database="service"></div>
+  <div ng-if="service.slug === 'email'" service-email="service"></div>
 
 
 </div>
